@@ -1,8 +1,30 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    display: flex;
+    padding: 5vw;
 }
 
-a {
-  color: #00B7FF;
+#left {
+    width: 40vw;
+    float: left;
+}
+
+#right {
+    width: 40vw;
+    float: left;
+}
+
+li {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+#cmdgit h2 {
+    font-family: monospace;
+    font-size: 24px;
+}
+
+#cmdgit pre {
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 18px;
 }
