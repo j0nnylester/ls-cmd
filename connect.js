@@ -1,7 +1,9 @@
 const mongodb = require("mongodb");
+require("dotenv").config();
 
-const uri =
-    "mongodb+srv://ls-cmd:1qFWaK0vioi622aj@ls-cmd-kbfzv.mongodb.net/ls-cmd?retryWrites=true";
+const uri = `mongodb+srv://ls-cmd:${
+    process.env.PASSWD
+}@ls-cmd-kbfzv.mongodb.net/ls-cmd?retryWrites=true`;
 
 const connect = async database => {
     return mongodb.MongoClient.connect(uri, { useNewUrlParser: true }).then(
