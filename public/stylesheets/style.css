@@ -1,16 +1,19 @@
-body {
+#container {
     display: flex;
+    flex-direction: column;
     padding: 5vw;
 }
 
-#left {
-    width: 40vw;
-    float: left;
+legend {
+    font-size: 18px;
+    font-weight: bold;
 }
 
-#right {
-    width: 40vw;
-    float: left;
+#newCmd {
+    width: 20vw;
+}
+#newDesc {
+    width: 30vw;
 }
 
 li {
@@ -18,12 +21,12 @@ li {
     font-size: 16px;
 }
 
-#cmdgit h2 {
+#container h2 {
     font-family: monospace;
     font-size: 24px;
 }
 
-#cmdgit pre {
+#container pre {
     font-family: sans-serif;
     font-style: italic;
     font-size: 18px;

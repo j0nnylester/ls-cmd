@@ -13,6 +13,7 @@ router.get("/:id", function(req, res, next) {
         .toArray()
         .then(data => {
             res.render("cmd", {
+                title: "Bash",
                 cmd: `${data[0].cmd}`,
                 desc: `${data[0].desc}`
             });

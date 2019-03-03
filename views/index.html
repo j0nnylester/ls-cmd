@@ -9,13 +9,32 @@
         type="text/css">
 </head>
 <body>
-  <div id="left">
-    <h3>Bash Commands</h3>
-    <ul id="cmd"></ul>
-  </div>
-  <div id="right">
-    <h3>Git Commands</h3>
-    <ul id="git"></ul>
+  <form onsubmit="addCmd(event)">
+    <fieldset title="Add a command">
+      <legend>Add a command</legend><select id="cmdOrGit">
+        <option value="cmd">
+          bash
+        </option>
+        <option value="git">
+          git
+        </option>
+      </select> <input id="newCmd"
+                placeholder="command"
+                type="text"> <input id="newDesc"
+                placeholder="command description"
+                type="text"> <button id="submitButton"
+                type="submit">+</button>
+    </fieldset>
+  </form>
+  <div id="container">
+    <div>
+      <h3>Bash Commands</h3>
+      <ul id="cmd"></ul>
+    </div>
+    <div>
+      <h3>Git Commands</h3>
+      <ul id="git"></ul>
+    </div>
   </div>
   <script src="javascripts/main.js"></script>
 </body>

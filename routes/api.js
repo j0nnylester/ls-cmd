@@ -20,6 +20,19 @@ router.get("/cmd", (req, res, next) => {
         .catch(err => console.log(err));
 });
 
+router.post("/cmd", function(req, res, next) {
+    db.collection("cmds").insertOne(
+        { id: shortid.generate(), cmd: req.body.cmd, desc: req.body.desc },
+        (error, result) => {
+            if (error) {
+                console.log("failed to add to mongo");
+                res.status(500).json({ message: "failed" });
+            }
+            res.status(201).json(result.ops[0]);
+        }
+    );
+});
+
 router.get("/cmd/:id", (req, res, next) => {
     db.collection("cmds")
         .find({ id: req.params.id })
@@ -39,6 +52,19 @@ router.get("/git", (req, res, next) => {
             res.json({ payload: data });
         })
         .catch(err => console.log(err));
+});
+
+router.post("/git", function(req, res, next) {
+    db.collection("gits").insertOne(
+        { id: shortid.generate(), cmd: req.body.cmd, desc: req.body.desc },
+        (error, result) => {
+            if (error) {
+                console.log("failed to add to mongo");
+                res.status(500).json({ message: "failed" });
+            }
+            res.status(201).json(result.ops[0]);
+        }
+    );
 });
 
 router.get("/git/:id", (req, res, next) => {

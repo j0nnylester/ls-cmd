@@ -12,7 +12,8 @@ router.get("/:id", function(req, res, next) {
         .find({ id: req.params.id })
         .toArray()
         .then(data => {
-            res.render("git", {
+            res.render("cmd", {
+                title: "Git",
                 cmd: `${data[0].cmd}`,
                 desc: `${data[0].desc}`
             });
