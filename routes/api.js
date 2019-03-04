@@ -9,9 +9,9 @@ connect("ls-cmd").then(database => {
     db = database;
 });
 
-router.get("/cmd", (req, res, next) => {
+router.get("/cmds", (req, res, next) => {
     db.collection("cmds")
-        .find({})
+        .find({ type: "bash" })
         .sort({ cmd: 1 })
         .toArray()
         .then(data => {
@@ -20,20 +20,20 @@ router.get("/cmd", (req, res, next) => {
         .catch(err => console.log(err));
 });
 
-router.post("/cmd", function(req, res, next) {
-    db.collection("cmds").insertOne(
-        { id: shortid.generate(), cmd: req.body.cmd, desc: req.body.desc },
-        (error, result) => {
-            if (error) {
-                console.log("failed to add to mongo");
-                res.status(500).json({ message: "failed" });
-            }
-            res.status(201).json(result.ops[0]);
-        }
-    );
-});
+// router.post("/cmds", function(req, res, next) {
+//     db.collection("cmds").insertOne(
+//         { id: shortid.generate(), cmd: req.body.cmd, desc: req.body.desc },
+//         (error, result) => {
+//             if (error) {
+//                 console.log("failed to add to mongo");
+//                 res.status(500).json({ message: "failed" });
+//             }
+//             res.status(201).json(result.ops[0]);
+//         }
+//     );
+// });
 
-router.get("/cmd/:id", (req, res, next) => {
+router.get("/cmds/:id", (req, res, next) => {
     db.collection("cmds")
         .find({ id: req.params.id })
         .toArray()
@@ -43,9 +43,9 @@ router.get("/cmd/:id", (req, res, next) => {
         .catch(err => console.log(err));
 });
 
-router.get("/git", (req, res, next) => {
-    db.collection("gits")
-        .find({})
+router.get("/gits", (req, res, next) => {
+    db.collection("cmds")
+        .find({ type: "git" })
         .sort({ name: 1 })
         .toArray()
         .then(data => {
@@ -54,20 +54,20 @@ router.get("/git", (req, res, next) => {
         .catch(err => console.log(err));
 });
 
-router.post("/git", function(req, res, next) {
-    db.collection("gits").insertOne(
-        { id: shortid.generate(), cmd: req.body.cmd, desc: req.body.desc },
-        (error, result) => {
-            if (error) {
-                console.log("failed to add to mongo");
-                res.status(500).json({ message: "failed" });
-            }
-            res.status(201).json(result.ops[0]);
-        }
-    );
-});
+// router.post("/gits", function(req, res, next) {
+//     db.collection("cmds").insertOne(
+//         { id: shortid.generate(), cmd: req.body.cmd, desc: req.body.desc },
+//         (error, result) => {
+//             if (error) {
+//                 console.log("failed to add to mongo");
+//                 res.status(500).json({ message: "failed" });
+//             }
+//             res.status(201).json(result.ops[0]);
+//         }
+//     );
+// });
 
-router.get("/git/:id", (req, res, next) => {
+router.get("/gits/:id", (req, res, next) => {
     db.collection("gits")
         .find({ id: req.params.id })
         .toArray()

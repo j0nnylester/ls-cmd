@@ -7,23 +7,23 @@ const desctext = document.getElementById("newDesc");
 
 const appendToCmd = item => {
     let newP = document.createElement("li");
-    newP.innerHTML = `<a href="/cmd/${item.id}">${item.cmd}</a>`;
+    newP.innerHTML = `<a href="/cmds/${item.id}">${item.cmd}</a>`;
     cmdsList.appendChild(newP);
 };
 const appendToGit = item => {
     let newP = document.createElement("li");
-    newP.innerHTML = `<a href="/git/${item.id}">${item.cmd}</a>`;
+    newP.innerHTML = `<a href="/gits/${item.id}">${item.cmd}</a>`;
     gitsList.appendChild(newP);
 };
 
 const showAll = () => {
     cmdsList.innerHTML = ``;
     gitsList.innerHTML = ``;
-    fetch("./api/cmd")
+    fetch("./api/cmds")
         .then(response => response.json())
         .then(response => response.payload.forEach(appendToCmd));
 
-    fetch("./api/git")
+    fetch("./api/gits")
         .then(response => response.json())
         .then(response => response.payload.forEach(appendToGit));
 };

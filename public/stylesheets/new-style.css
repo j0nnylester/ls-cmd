@@ -1,0 +1,18 @@
+body {
+    background-color: darkgray;
+    display: flex;
+    justify-content: center;
+}
+
+.cmdsearch {
+    margin: 10vh;
+}
+
+.searchbox {
+    width: 60vw;
+    height: 10vh;
+    text-align: center;
+    border-radius: 1vh;
+    box-shadow: 0px 0.5vh 0.25vh gray;
+    font-size: 5vh;
+}
