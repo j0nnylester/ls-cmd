@@ -2,7 +2,7 @@ const mongodb = require("mongodb");
 require("dotenv").config();
 
 const uri = `mongodb+srv://ls-cmd:${
-    process.env.PASSWD
+    process.env.MDB_PASSWD
 }@ls-cmd-kbfzv.mongodb.net/ls-cmd?retryWrites=true`;
 
 const connect = async database => {
