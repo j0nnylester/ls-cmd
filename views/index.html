@@ -1,40 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <title>ls cmd</title>
+  <title>ls-cmd</title>
   <link href="stylesheets/style.css"
         media="screen"
         rel="stylesheet"
         type="text/css">
 </head>
 <body>
-  <form onsubmit="addCmd(event)">
-    <fieldset title="Add a command">
-      <legend>Add a command</legend><select id="cmdOrGit">
-        <option value="cmd">
-          bash
-        </option>
-        <option value="git">
-          git
-        </option>
-      </select> <input id="newCmd"
-                placeholder="command"
-                type="text"> <input id="newDesc"
-                placeholder="command description"
-                type="text"> <button id="submitButton"
-                type="submit">+</button>
-    </fieldset>
-  </form>
-  <div id="container">
-    <div>
-      <h3>Bash Commands</h3>
-      <ul id="cmd"></ul>
-    </div>
-    <div>
-      <h3>Git Commands</h3>
-      <ul id="git"></ul>
-    </div>
+  <div class="search">
+    <form class="cmdsearch">
+      <input class="searchbox"
+            placeholder="search for a bash, git or node command"
+            type="text">
+      <ul class="suggestions"></ul>
+    </form>
   </div>
   <script src="javascripts/main.js"></script>
 </body>
