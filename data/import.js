@@ -8,12 +8,12 @@ let uploadData = cmdjson.map(function(item) {
         cmd: item.cmd,
         flags: item.flags,
         args: item.args,
-        desc: item.desc
+        desc: item.desc,
+        user: item.user
     };
 });
 
-let db;
-//console.log(uploadData);
+
 connect("ls-cmd").then(db => {
     db.collection("cmds")
         .insertMany(uploadData)

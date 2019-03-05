@@ -1,54 +1,59 @@
-// main.js
-const cmdsList = document.getElementById("cmd");
-const gitsList = document.getElementById("git");
-const cmdtype = document.getElementById("cmdOrGit");
-const cmdtext = document.getElementById("newCmd");
-const desctext = document.getElementById("newDesc");
+let cmdList;
 
-const appendToCmd = item => {
-    let newP = document.createElement("li");
-    newP.innerHTML = `<a href="/cmds/${item.id}">${item.cmd}</a>`;
-    cmdsList.appendChild(newP);
-};
-const appendToGit = item => {
-    let newP = document.createElement("li");
-    newP.innerHTML = `<a href="/gits/${item.id}">${item.cmd}</a>`;
-    gitsList.appendChild(newP);
-};
+fetch("/api/cmds")
+    .then(response => response.json())
+    .then(data => (cmdList = data.payload));
 
-const showAll = () => {
-    cmdsList.innerHTML = ``;
-    gitsList.innerHTML = ``;
-    fetch("./api/cmds")
-        .then(response => response.json())
-        .then(response => response.payload.forEach(appendToCmd));
+//console.log(cmdList);
 
-    fetch("./api/gits")
-        .then(response => response.json())
-        .then(response => response.payload.forEach(appendToGit));
-};
+function findMatches(cmdToMatch, cmdList) {
+    return cmdList.filter(command => {
+        const regex = new RegExp(cmdToMatch, "gi");
+        return (
+            command.cmd.match(regex) ||
+            command.flags.match(regex) ||
+            command.args.match(regex) ||
+            command.desc.match(regex)
+        );
+    });
+}
 
-const addCmd = event => {
-    event.preventDefault();
-    type = event.target[1].value;
-    console.log("cmd", event.target[2].value);
-    console.log("des", event.target[3].value);
-
-    fetch(`/api/${type}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        },
-        body: JSON.stringify({
-            cmd: event.target[2].value,
-            desc: event.target[3].value
+function displayMatches() {
+    //console.log(this.value);
+    const matchArray = findMatches(this.value, cmdList);
+    console.log(matchArray);
+    const html = matchArray
+        .map(command => {
+            const regex = new RegExp(this.value, "gi");
+            const cmdName = command.cmd.replace(
+                regex,
+                `<span class="hl">${this.value}</span>`
+            );
+            const flagsName = command.flags.replace(
+                regex,
+                `<span class="hl">${this.value}</span>`
+            );
+            const argsName = command.args.replace(
+                regex,
+                `<span class="hl">${this.value}</span>`
+            );
+            const descText = command.desc.replace(
+                regex,
+                `<span class="hl">${this.value}</span>`
+            );
+            return `
+        <li><span class="code">${cmdName} ${flagsName}</span> <span class="args">${argsName}</span>
+        <br>
+        <span class="desc">${descText}</span>
+        </li>
+        `;
         })
-    })
-        .then((cmdtext.value = ""))
-        .then((desctext.value = ""))
-        .then(showAll())
-        .catch(err => console.log({ error: err }));
-};
+        .join("");
+    suggestions.innerHTML = html;
+}
 
-showAll();
+const searchInput = document.querySelector(".searchbox");
+const suggestions = document.querySelector(".suggestions");
+
+searchInput.addEventListener("change", displayMatches);
+searchInput.addEventListener("keyup", displayMatches);
