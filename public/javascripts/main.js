@@ -1,10 +1,8 @@
 let cmdList;
 
-fetch("/api/cmds")
+fetch("/cmds")
     .then(response => response.json())
     .then(data => (cmdList = data.payload));
-
-//console.log(cmdList);
 
 function findMatches(cmdToMatch, cmdList) {
     return cmdList.filter(command => {
@@ -19,10 +17,12 @@ function findMatches(cmdToMatch, cmdList) {
 }
 
 function displayMatches() {
-    //console.log(this.value);
     const matchArray = findMatches(this.value, cmdList);
-    console.log(matchArray);
-    const html = matchArray
+    if (matchArray.length === 0) {
+        const nocmd = ``;
+        suggestions.innerHTML = nocmd;
+    }
+    const cmdhtml = matchArray
         .map(command => {
             const regex = new RegExp(this.value, "gi");
             const cmdName = command.cmd.replace(
@@ -42,14 +42,14 @@ function displayMatches() {
                 `<span class="hl">${this.value}</span>`
             );
             return `
-        <li><span class="code">${cmdName} ${flagsName}</span> <span class="args">${argsName}</span>
+        <li class="list-suggestions"><span class="cmd">${cmdName}</span> <span class="flags">${flagsName}</span> <span class="args">${argsName}</span>
         <br>
         <span class="desc">${descText}</span>
         </li>
         `;
         })
         .join("");
-    suggestions.innerHTML = html;
+    suggestions.innerHTML = cmdhtml;
 }
 
 const searchInput = document.querySelector(".searchbox");

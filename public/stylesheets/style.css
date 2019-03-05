@@ -4,8 +4,13 @@ body {
     justify-content: center;
 }
 
-.cmdsearch {
-    margin: 10vh;
+.search {
+    margin-top: 10vh;
+    height: 100vh;
+    width: 80vw;
+    float: right;
+    display: flex;
+    justify-content: center;
 }
 
 .searchbox {
@@ -21,20 +26,26 @@ ul {
     list-style: none;
 }
 
-li {
+.list-suggestions {
     font-size: 18px;
     width: 50vw;
     height: 7vh;
     max-width: 60vw;
     background-color: white;
-    padding: 1vw;
+    padding: 10px;
     border: 1px solid grey;
 }
 
-.code {
+.cmd {
     font-family: monospace;
+    text-decoration: underline;
 }
 
 .args {
     font-style: italic;
+    font-size: 20px;
+}
+
+.hl {
+    font-weight: bold;
 }
