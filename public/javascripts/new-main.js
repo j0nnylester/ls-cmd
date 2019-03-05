@@ -1,27 +1,20 @@
-const cmdList = [
-    {
-        type: "git",
-        cmd: "git config --global user.name '[firstname lastname]'",
-        desc:
-            "set a name that is identifiable for credit when review version history"
-    },
-    {
-        type: "git",
-        cmd: "git config --global user.email “[valid-email]”",
-        desc:
-            "set an email address that will be associated with each history marker"
-    },
-    {
-        type: "git",
-        cmd: "git config --global color.ui auto",
-        desc: "set automatic command line coloring for Git for easy reviewing"
-    }
-];
+let cmdList;
+
+fetch("/api/cmds")
+    .then(response => response.json())
+    .then(data => (cmdList = data.payload));
+
+//console.log(cmdList);
 
 function findMatches(cmdToMatch, cmdList) {
     return cmdList.filter(command => {
         const regex = new RegExp(cmdToMatch, "gi");
-        return command.cmd.match(regex) || command.desc.match(regex);
+        return (
+            command.cmd.match(regex) ||
+            command.flags.match(regex) ||
+            command.args.match(regex) ||
+            command.desc.match(regex)
+        );
     });
 }
 
@@ -36,13 +29,22 @@ function displayMatches() {
                 regex,
                 `<span class="hl">${this.value}</span>`
             );
+            const flagsName = command.flags.replace(
+                regex,
+                `<span class="hl">${this.value}</span>`
+            );
+            const argsName = command.args.replace(
+                regex,
+                `<span class="hl">${this.value}</span>`
+            );
             const descText = command.desc.replace(
                 regex,
                 `<span class="hl">${this.value}</span>`
             );
             return `
-        <li>${cmdName}, ${descText}</span>
-        <span class="population">${command.type}</span>
+        <li><span class="code">${cmdName} ${flagsName}</span> <span class="args">${argsName}</span>
+        <br>
+        <span class="desc">${descText}</span>
         </li>
         `;
         })

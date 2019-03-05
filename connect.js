@@ -6,7 +6,7 @@ const mongoPass = process.env.MDB_PASSWD || "hF1d6TgctPmSLyur";
 
 const uri = `mongodb+srv://${mongoUser}:${mongoPass}@ls-cmd-kbfzv.mongodb.net/ls-cmd?retryWrites=true`;
 
-const connect = async database => {
+const connect = database => {
     return mongodb.MongoClient.connect(uri, { useNewUrlParser: true }).then(
         client => {
             //console.log("Connected to MongoDB!");

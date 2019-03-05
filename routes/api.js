@@ -11,7 +11,7 @@ connect("ls-cmd").then(database => {
 
 router.get("/cmds", (req, res, next) => {
     db.collection("cmds")
-        .find({ type: "bash" })
+        .find({})
         .sort({ cmd: 1 })
         .toArray()
         .then(data => {

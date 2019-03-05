@@ -1,227 +1,266 @@
 [
     {
-        "type": "git",
-        "cmd": "git config --global user.name '[firstname lastname]'",
+        "cmd": "git",
+        "flags": "config --global user.name",
+        "args": "firstname lastname",
         "desc": "set a name that is identifiable for credit when review version history"
     },
     {
-        "type": "git",
-        "cmd": "git config --global user.email “[valid-email]”",
+        "cmd": "git",
+        "flags": "config --global user.email",
+        "args": "valid-email",
         "desc": "set an email address that will be associated with each history marker"
     },
     {
-        "type": "git",
-        "cmd": "git config --global color.ui auto",
+        "cmd": "git",
+        "flags": "config --global color.ui",
+        "args": "auto",
         "desc": "set automatic command line coloring for Git for easy reviewing"
     },
     {
-        "type": "git",
         "cmd": "git init",
+        "flags": "",
+        "args": "",
         "desc": "initialize an existing directory as a Git repository"
     },
     {
-        "type": "git",
-        "cmd": "git clone [url]",
+        "cmd": "git",
+        "flags": "clone",
+        "args": "url",
         "desc": "retrieve an entire repository from a hosted location via URL"
     },
     {
-        "type": "git",
-        "cmd": "git status",
+        "cmd": "git",
+        "flags": "status",
+        "args": "",
         "desc": "show modified files in working directory, staged for your next commit"
     },
     {
-        "type": "git",
-        "cmd": "git add [file]",
+        "cmd": "git",
+        "flags": "add",
+        "args": "file",
         "desc": "add a file as it looks now to your next commit (stage)"
     },
     {
-        "type": "git",
-        "cmd": "git reset [file]",
+        "cmd": "git",
+        "flags": "reset",
+        "args": "file",
         "desc": "unstage a file while retaining the changes in working directory"
     },
     {
-        "type": "git",
-        "cmd": "git diff",
+        "cmd": "git",
+        "flags": "diff",
+        "args": "",
         "desc": "diff of what is changed but not staged"
     },
     {
-        "type": "git",
-        "cmd": "git diff --staged",
+        "cmd": "git",
+        "flags": "diff --staged",
+        "args": "",
         "desc": "diff of what is staged but not yet commited"
     },
     {
-        "type": "git",
-        "cmd": "git commit -m “[descriptive message]”",
+        "cmd": "git",
+        "flags": "commit -m",
+        "args": "\"descriptive message\"",
         "desc": "commit your staged content as a new commit snapshot"
     },
     {
-        "type": "git",
-        "cmd": "git branch",
+        "cmd": "git",
+        "flags": "branch",
+        "args": "",
         "desc": "list your branches. a * will appear next to the currently active branch"
     },
     {
-        "type": "git",
-        "cmd": "git branch [branch-name]",
+        "cmd": "git",
+        "flags": "branch",
+        "args": "branch-name",
         "desc": "create a new branch at the current commit"
     },
     {
-        "type": "git",
-        "cmd": "git checkout",
+        "cmd": "git",
+        "flags": "checkout",
+        "args": "",
         "desc": "switch to another branch and check it out into your working directory"
     },
     {
-        "type": "git",
-        "cmd": "git merge [branch]",
+        "cmd": "git",
+        "flags": "merge",
+        "args": "branch",
         "desc": "merge the specified branch’s history into the current one"
     },
     {
-        "type": "git",
-        "cmd": "git log",
+        "cmd": "git",
+        "flags": "log",
+        "args": "",
         "desc": "show all commits in the current branch’s history"
     },
     {
-        "type": "git",
-        "cmd": "git log",
-        "desc": "show the commit history for the currently active branch"
-    },
-    {
-        "type": "git",
-        "cmd": "git log branchB..branchA",
+        "cmd": "git",
+        "flags": "log",
+        "args": "branchB..branchA",
         "desc": "show the commits on branchA that are not on branchB"
     },
     {
-        "type": "git",
-        "cmd": "git log --follow [file]",
+        "cmd": "git",
+        "flags": "log --follow",
+        "args": "file",
         "desc": "show the commits that changed file, even across renames"
     },
     {
-        "type": "git",
-        "cmd": "git diff branchB...branchA",
+        "cmd": "git",
+        "flags": "diff",
+        "args": "branchB...branchA",
         "desc": "show the diff of what is in branchA that is not in branchB"
     },
     {
-        "type": "git",
-        "cmd": "git show [SHA]",
+        "cmd": "git",
+        "flags": "show",
+        "args": "SHA",
         "desc": "show any object in Git in human-readable format"
     },
     {
-        "type": "git",
-        "cmd": "git rm [file]",
+        "cmd": "git",
+        "flags": "rm",
+        "args": "file",
         "desc": "delete the file from project and stage the removal for commit"
     },
     {
-        "type": "git",
-        "cmd": "git mv [existing-path] [new-path]",
+        "cmd": "git",
+        "flags": "mv",
+        "args": "existing-path new-path",
         "desc": "change an existing file path and stage the move"
     },
     {
-        "type": "git",
-        "cmd": "git log --stat -M",
+        "cmd": "git",
+        "flags": "log --stat -M",
+        "args": "",
         "desc": "show all commit logs with indication of any paths that moved"
     },
     {
-        "type": "git",
-        "cmd": "git remote add [alias] [url]",
+        "cmd": "git",
+        "flags": "remote add",
+        "args": "alias url",
         "desc": "add a git URL as an alias"
     },
     {
-        "type": "git",
-        "cmd": "git fetch [alias]",
+        "cmd": "git",
+        "flags": "fetch",
+        "args": "alias",
         "desc": "fetch down all the branches from that Git remote"
     },
     {
-        "type": "git",
-        "cmd": "git merge [alias]/[branch]",
+        "cmd": "git",
+        "flags": "merge",
+        "args": "alias/branch",
         "desc": "merge a remote branch into your current branch to bring it up to date"
     },
     {
-        "type": "git",
-        "cmd": "git push [alias] [branch]",
+        "cmd": "git push",
+        "flags": "push",
+        "args": "alias branch",
         "desc": "Transmit local branch commits to the remote repository branch"
     },
     {
-        "type": "git",
-        "cmd": "git pull",
+        "cmd": "git",
+        "flags": "pull",
+        "args": "",
         "desc": "fetch and merge any commits from the tracking remote branch"
     },
     {
-        "type": "git",
-        "cmd": "git rebase [branch]",
+        "cmd": "git",
+        "flags": "rebase",
+        "args": "branch",
         "desc": "apply any commits of current branch ahead of specified one"
     },
     {
-        "type": "git",
-        "cmd": "git reset --hard [commit]",
+        "cmd": "git",
+        "flags": "reset --hard",
+        "args": "commit",
         "desc": "clear staging area, rewrite working tree from specified commit"
     },
     {
-        "type": "git",
-        "cmd": "git stash",
+        "cmd": "git",
+        "flags": "stash",
+        "args": "",
         "desc": "Save modified and staged changes"
     },
     {
-        "type": "git",
-        "cmd": "git stash list",
+        "cmd": "git",
+        "flags": "stash list",
+        "args": "",
         "desc": "list stack-order of stashed file changes"
     },
     {
-        "type": "git",
-        "cmd": "git stash pop",
+        "cmd": "git",
+        "flags": "stash pop",
+        "args": "",
         "desc": "write working from top of stash stack"
     },
     {
-        "type": "git",
-        "cmd": "git stash drop",
+        "cmd": "git",
+        "flags": "stash drop",
+        "args": "",
         "desc": "discard the changes from top of stash stack"
     },
     {
-        "type": "bash",
         "cmd": "pwd",
+        "flags": "",
+        "args": "",
         "desc": "show current directory"
     },
     {
-        "type": "bash",
-        "cmd": "mkdir folderName",
+        "cmd": "mkdir ",
+        "flags": "",
+        "args": "folderName",
         "desc": "make a new folder called folderName"
     },
     {
-        "type": "bash",
-        "cmd": "cd folderName",
+        "cmd": "cd ",
+        "flags": "",
+        "args": "folderName",
         "desc": "change to the folder called folderName"
     },
     {
-        "type": "bash",
-        "cmd": "cd ..",
+        "cmd": "cd",
+        "flags": "",
+        "args": "..",
         "desc": "change to the parent folder"
     },
     {
-        "type": "bash",
         "cmd": "ls",
+        "flags": "",
+        "args": "",
         "desc": "list files in the current folder"
     },
     {
-        "type": "bash",
-        "cmd": "ls folderName",
+        "cmd": "ls",
+        "flags": "",
+        "args": "folderName",
         "desc": "list files in the folder folderName"
     },
     {
-        "type": "bash",
-        "cmd": "ls -a",
+        "cmd": "ls",
+        "flags": "-a",
+        "args": "",
         "desc": "list all files in the current folder"
     },
     {
-        "type": "bash",
-        "cmd": "ls -l",
+        "cmd": "ls",
+        "flags": "-l",
+        "args": "",
         "desc": "list all files in the current folder with long listing format"
     },
     {
-        "type": "bash",
-        "cmd": "ls -1",
+        "cmd": "ls",
+        "flags": "-1",
+        "args": "",
         "desc": "list files in the current folder showing one file per line"
     },
     {
-        "type": "bash",
-        "cmd": "code .",
+        "cmd": "code",
+        "flags": "",
+        "args": ".",
         "desc": "open vscode in the current folder"
     }
 ]
