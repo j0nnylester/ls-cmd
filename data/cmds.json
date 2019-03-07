@@ -245,7 +245,7 @@
         "user": false
     },
     {
-        "cmd": "mkdir ",
+        "cmd": "mkdir",
         "flags": "",
         "args": "[folder]",
         "desc": "make a new folder called folder",
