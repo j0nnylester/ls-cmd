@@ -1,8 +1,10 @@
 const shortid = require("shortid");
 const connect = require("../connect.js");
-const cmdjson = require("./cmds.json");
+// const cmdjson = require("./cmds.json");
+const newjson = require("./new.json");
 
-let uploadData = cmdjson.map(function(item) {
+// let uploadData = cmdjson.map(function(item) {
+let uploadData = newjson.map(function(item) {
     return {
         id: shortid.generate(),
         cmd: item.cmd,
@@ -12,7 +14,6 @@ let uploadData = cmdjson.map(function(item) {
         user: item.user
     };
 });
-
 
 connect("ls-cmd").then(db => {
     db.collection("cmds")
