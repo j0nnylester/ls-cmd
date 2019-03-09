@@ -5,15 +5,23 @@ fetch("/cmds")
     .then(data => (cmdList = data.payload));
 
 function findMatches(cmdToMatch, cmdList) {
-    return cmdList.filter(command => {
-        const regex = new RegExp(cmdToMatch, "gi");
-        return (
-            command.cmd.match(regex) ||
-            command.flags.match(regex) ||
-            command.args.match(regex) ||
-            command.desc.match(regex)
-        );
+    splitCmd = cmdToMatch.split(" ");
+    let eachSearch = splitCmd.map(splitToMatch => {
+        return cmdList.filter(command => {
+            const regex = new RegExp(splitToMatch, "gi");
+            return (
+                command.cmd.match(regex) ||
+                command.flags.match(regex) ||
+                command.args.match(regex) ||
+                command.desc.match(regex)
+            );
+        });
     });
+    let result = [];
+    for (i = 0; i < eachSearch.length; i++) {
+        result = [...result, ...eachSearch[i]];
+    }
+    return result;
 }
 
 function displayMatches() {
@@ -24,27 +32,14 @@ function displayMatches() {
     }
     const cmdhtml = matchArray
         .map(command => {
-            const regex = new RegExp(this.value, "gi");
-            const cmdName = command.cmd.replace(
-                regex,
-                `<span class="hl">${this.value}</span>`
-            );
-            const flagsName = command.flags.replace(
-                regex,
-                `<span class="hl">${this.value}</span>`
-            );
-            const argsName = command.args.replace(
-                regex,
-                `<span class="hl">${this.value}</span>`
-            );
-            const descText = command.desc.replace(
-                regex,
-                `<span class="hl">${this.value}</span>`
-            );
             return `
-        <li class="list-suggestions"><span class="cmd">${cmdName}</span> <span class="flags">${flagsName}</span> <span class="args">${argsName}</span>
+        <li class="list-suggestions"><span class="cmd">${
+            command.cmd
+        }</span> <span class="flags">${
+                command.flags
+            }</span> <span class="args">${command.args}</span>
         <br>
-        <span class="desc">${descText}</span>
+        <span class="desc">${command.desc}</span>
         </li>
         `;
         })

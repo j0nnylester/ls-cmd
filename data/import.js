@@ -1,10 +1,10 @@
 const shortid = require("shortid");
 const connect = require("../connect.js");
 // const cmdjson = require("./cmds.json");
-const newjson = require("./new.json");
+const onejson = require("./one.json");
 
 // let uploadData = cmdjson.map(function(item) {
-let uploadData = newjson.map(function(item) {
+let uploadData = onejson.map(function(item) {
     return {
         id: shortid.generate(),
         cmd: item.cmd,
