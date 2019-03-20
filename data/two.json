@@ -1,0 +1,16 @@
+[
+    {
+        "cmd": "npx",
+        "flags": "express-generator --view=hbs",
+        "args": "",
+        "desc": "creates an express app in te current directory, suing handlebars are the view engine",
+        "user": false
+    },
+    {
+        "cmd": "npx",
+        "flags": "create-react-app",
+        "args": "[foldername]",
+        "desc": "creates a react app in the specified folder",
+        "user": false
+    }
+]
