@@ -20,7 +20,7 @@
     "synk": "0.0.2"
   },
   "devDependencies": {
-    "jest": "^24.1.0",
-    "nodemon": "^1.18.10"
+    "jest": "^25.0.0",
+    "nodemon": "^2.0.3"
   }
 }
